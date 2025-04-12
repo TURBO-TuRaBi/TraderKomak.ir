@@ -115,7 +115,7 @@ function normalizeSymbol(input) {
 
 // Setup autocomplete for both inputs
 let cachedSymbols = [];
-fetch('https://traderkomakserver.onrender.com')
+fetch('https://traderkomakserver.onrender.com/symbols')
     .then(response => response.json())
     .then(symbols => {
         cachedSymbols = symbols; // ذخیره نمادها برای استفاده در هر دو اتوکامپلیت
