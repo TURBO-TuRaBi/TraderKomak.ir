@@ -115,7 +115,7 @@ function normalizeSymbol(input) {
 
 // Setup autocomplete for both inputs
 let cachedSymbols = [];
-fetch('http://localhost:3000/symbols')
+fetch('https://traderkomakserver.onrender.com')
     .then(response => response.json())
     .then(symbols => {
         cachedSymbols = symbols; // ذخیره نمادها برای استفاده در هر دو اتوکامپلیت
@@ -180,7 +180,7 @@ fetch('http://localhost:3000/symbols')
 
 // Function to fetch historical data
 async function fetchHistoricalData() {
-    const url = `http://localhost:3000/historical?symbol=${currentSymbol}&granularity=${currentTimeframe}&count=5000`;
+    const url = `https://traderkomakserver.onrender.com/historical?symbol=${currentSymbol}&granularity=${currentTimeframe}&count=5000`;
     try {
         const response = await fetch(url);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -220,7 +220,7 @@ async function fetchHistoricalData() {
 
 // Function to fetch live price
 async function fetchLivePrice(symbol, isWatchlist = false) {
-    const url = `http://localhost:3000/live-price?symbol=${symbol}`;
+    const url = `https://traderkomakserver.onrender.com/live-price?symbol=${symbol}`;
     try {
         const response = await fetch(url);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
