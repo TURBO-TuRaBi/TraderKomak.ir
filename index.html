@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oanda Lightweight Chart</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lightweight-charts@4.1.6/dist/lightweight-charts.standalone.production.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@autocomplete-js/autocomplete@0.7.0/dist/autocomplete.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <label for="symbol">Symbol:</label>
+            <input type="text" id="symbol" placeholder="e.g., EUR_USD" value="EUR_USD">
+            <button onclick="updateChart()">Load</button>
+            <label for="timeframe">Timeframe:</label>
+            <select id="timeframe">
+                <option value="S5">5 Seconds</option>
+                <option value="S10">10 Seconds</option>
+                <option value="S30">30 Seconds</option>
+                <option value="M1" selected>1 Minute</option>
+                <option value="M2">2 Minutes</option>
+                <option value="M3">3 Minutes</option>
+                <option value="M4">4 Minutes</option>
+                <option value="M5">5 Minutes</option>
+                <option value="M10">10 Minutes</option>
+                <option value="M15">15 Minutes</option>
+                <option value="M30">30 Minutes</option>
+                <option value="H1">1 Hour</option>
+                <option value="H2">2 Hours</option>
+                <option value="H3">3 Hours</option>
+                <option value="H4">4 Hours</option>
+                <option value="H6">6 Hours</option>
+                <option value="H8">8 Hours</option>
+                <option value="H12">12 Hours</option>
+                <option value="D">1 Day</option>
+                <option value="W">1 Week</option>
+                <option value="M">1 Month</option>
+            </select>
+        </div>
+        <div class="main-wrapper">
+            <div class="chart-wrapper">
+                <div id="chart"></div>
+            </div>
+            <div class="sidebar">
+                <button class="toggle-watchlist" onclick="toggleWatchlist()">☰</button>
+            </div>
+            <div class="watchlist">
+                <div class="watchlist-header">
+                    <h3>Watchlist</h3>
+                    <button class="edit-btn" onclick="toggleEditMode()">Edit</button>
+                </div>
+                <input type="text" id="watchlist-input" placeholder="Enter symbol">
+                <button onclick="addToWatchlist()">Add</button>
+                <div class="delete-selected" style="display: none;">
+                    <button onclick="deleteSelected()">Delete Selected</button>
+                </div>
+                <ul id="watchlist-items"></ul>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

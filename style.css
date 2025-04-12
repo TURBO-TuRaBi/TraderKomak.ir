@@ -1,0 +1,300 @@
+/* بقیه استایل‌ها همون‌طوری می‌مونن */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.controls {
+    padding: 10px;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: fixed; /* هدر ثابت */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.controls label {
+    margin-right: 5px;
+}
+
+.controls input,
+.controls select,
+.controls button {
+    padding: 5px;
+    font-size: 16px;
+}
+
+.controls button {
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
+
+.controls button:hover {
+    background-color: #45a049;
+}
+
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    position: relative;
+    margin-top: 50px; /* فاصله برای هدر ثابت */
+}
+
+.chart-wrapper {
+    width: calc(100% - 40px);
+    transition: width 0.3s ease;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.watchlist:not(.collapsed) ~ .chart-wrapper {
+    width: calc(100% - 290px);
+}
+
+#chart {
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar {
+    width: 40px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    position: fixed;
+    right: 0;
+    top: 50px;
+    bottom: 0;
+    z-index: 10;
+}
+
+.toggle-watchlist {
+    width: 35px;
+    height: 35px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-watchlist:hover {
+    background-color: #45a049;
+}
+
+.watchlist {
+    width: 250px;
+    background-color: #fff;
+    border-left: 1px solid #e0e0e0;
+    padding: 10px;
+    transition: width 0.3s ease;
+    overflow-y: auto;
+    position: fixed;
+    right: 40px;
+    top: 50px;
+    bottom: 0;
+    z-index: 5;
+}
+
+.watchlist.collapsed {
+    width: 0;
+    padding: 0;
+}
+
+.watchlist.collapsed .watchlist-header,
+.watchlist.collapsed input,
+.watchlist.collapsed button:not(.toggle-watchlist),
+.watchlist.collapsed ul,
+.watchlist.collapsed .delete-selected {
+    display: none;
+}
+
+.watchlist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.watchlist-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.edit-btn {
+    padding: 2px 6px;
+    font-size: 12px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    background-color: #1e88e5;
+}
+
+.delete-selected {
+    margin: 5px 0;
+}
+
+.delete-selected button {
+    width: 100%;
+    padding: 5px;
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.delete-selected button:hover {
+    background-color: #e53935;
+}
+
+.watchlist input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.watchlist button {
+    width: 100%;
+    padding: 5px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.watchlist button:hover {
+    background-color: #45a049;
+}
+
+.watchlist ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.watchlist li {
+    padding: 5px 5px 5px 25px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.watchlist li .checkbox {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+}
+
+.watchlist li.edit-mode .checkbox {
+    display: block;
+}
+
+.watchlist li .symbol-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.watchlist li .symbol-container:hover .symbol {
+    text-decoration: underline;
+}
+
+.watchlist li .symbol-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.watchlist li .broker {
+    font-size: 12px;
+    color: #888;
+}
+
+.watchlist li .price-up {
+    color: green;
+}
+
+.watchlist li .price-down {
+    color: red;
+}
+
+.watchlist li .price {
+    flex: 0 0 auto;
+    max-width: 110px;
+    text-align: right;
+    overflow: visible;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+/* استایل‌های جدید برای اتوکامپلیت */
+.autocomplete {
+    position: relative;
+}
+
+.autocomplete-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 100;
+    margin: 2px 0 0 0;
+    padding: 0;
+    list-style: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.autocomplete-list li {
+    padding: 8px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+}
+
+.autocomplete-list li:hover,
+.autocomplete-list li.selected {
+    background-color: #f0f0f0;
+}
